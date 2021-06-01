@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  
+  
+  <title>Project</title>
+  <style>
+    /* .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 100%;
+    }
+
+    .grid-item {
+      width: 100%;
+      height: 100%;
+    } */
+    #cs {
+      font-size: 30px;
+      font-weight: bolder;
+    }
+
+    .col-md-6 {
+      padding: 20px;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      setInterval("getCurrentSymbol()", 100 /* ms */);
+    });
+
+    function getCurrentSymbol() {
+      $("#cs").load("/current_symbol", function(data) {
+        $("#cs").text(data)
+      });
+    }
+  </script>
+</head>
+<body>
+  <!-- As a heading -->
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1">Bi-directionl Sign Language Translator</span>
+  </div>
+</nav>
+  <div class="container-flex">
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <h2>Sign to Text</h2>
+        <img src="{{ url_for('video_feed') }}" width="80%">
+        <br>
+        <h3>Predicted Sign:</h3>
+        <div id="cs"></div>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <h2>Text to Sign</h2>
+        <iframe src="http://127.0.0.1:8000/final.php" 
+            class="grid-item"
+            frameborder="0"
+            width="100%"
+            height="100%"
+            scrolling="no"></iframe>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="grid-container">
+    <div class="grid-item">
+      
+    </div>
+    
+  </div> -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+</body>
+</html>
